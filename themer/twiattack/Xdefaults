@@ -1,0 +1,35 @@
+*faceName: Terminus
+*faceSize: 10
+*font: xft:Terminus:pixelsize=10
+URxvt*.letterSpace: -2
+
+URxvt*.background: [70]#0e0e0e
+URxvt*.foreground: #ffffff
+URxvt*.cursorColor: #5041a0
+
+! black
+URxvt*.color0: #1d1420
+URxvt*.color8: #2a0080
+! red
+URxvt*.color1: #e0256e
+URxvt*.color9: #433cc8
+! green
+URxvt*.color2: #6846d1
+URxvt*.color10: #4e3cc8
+! yellow
+URxvt*.color3: #b666dc
+URxvt*.color11: #b6bcee
+! blue
+URxvt*.color4: #978fd3
+URxvt*.color12: #5d3bc8
+! magenta
+URxvt*.color5: #7e6fb2
+URxvt*.color13: #eee2fb
+! cyan
+URxvt*.color6: #6f5aa0
+URxvt*.color14: #7f64c8
+! white
+URxvt*.color7: #5041a0
+URxvt*.color15: #6c53c8
+! underline when default
+URxvt*.colorUL: #5041a0

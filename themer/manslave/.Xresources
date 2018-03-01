@@ -1,0 +1,19 @@
+! rofi
+rofi.modi: run
+rofi.font: Cousine 13
+rofi.width: 50
+rofi.lines: 5
+rofi.columns: 1
+rofi.opacity: 90
+! bg fg altbg hlbg hlfg
+rofi.color-normal: #a98045, #20160b, #b0894d, #a0753d, #b0894d
+rofi.color-urgent: #bc995a, #20160b, #b0894d, #c9ac6d, #b0894d 
+rofi.color-active: #a08258, #20160b, #b0894d, #c8a665, #b0894d
+rofi.color-window: #c5a667, #a0753d, #b0894d 
+rofi.bw: 4
+rofi.location: 0
+rofi.padding: 10
+rofi.fuzzy: false
+rofi.separator-style: solid
+rofi.hide-scrollbar: true
+rofi.auto-select: false

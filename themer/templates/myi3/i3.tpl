@@ -1,0 +1,265 @@
+# Sets the font for window titles to fontawesome, which has nice icons in it
+font pango:Cousine, FontAwesome 13
+
+# My mod key, alt
+set $mod Mod4
+
+# Vim-like bindings
+set $up k
+set $down j
+set $left h
+set $right l
+
+set $black {{ black }}
+set $alt_black {{ alt_black }}
+set $red {{ red }}
+set $alt_red {{ alt_red }}
+set $green {{ green }}
+set $alt_green {{ alt_green }}
+set $yellow {{ yellow }}
+set $alt_yellow {{ alt_yellow }}
+set $blue {{ blue }}
+set $alt_blue {{ alt_blue }}
+set $magenta {{ magenta }}
+set $alt_magenta {{ alt_magenta }}
+set $cyan {{ cyan }}
+set $alt_cyan {{ alt_cyan }}
+set $white {{ white }}
+set $alt_white {{ alt_white }}
+set $underline {{ underline }}
+
+set $background {{ black }}
+set $foreground {{ white }}
+set $gray       {{ alt_black }}
+set $primary    {{ primary }}
+set $secondary  {{ secondary }}
+set $tertiary   {{ tertiary }}
+set $warning    {{ special }}
+
+# Workspace names
+set $workspace1term "1 - "
+set $workspace2ffox "2 - "
+set $workspace3proj "3 - "
+set $workspace4play "4 - "
+set $workspace5ship "5 - "
+set $workspace6redt "6 - "
+set $workspace7chro "7 - "
+set $workspace8game "8 - "
+set $workspace9mail "9 - "
+set $workspace0misc "∅ - "
+
+# My terminal
+set $term termite
+
+# default workspace assignments
+assign [class="Firefox"] $workspace2ffox
+assign [class="google-chrome"] $workspace7chro
+assign [class="vlc"] $workspace4play
+assign [class="Thunderbird"] $workspace9mail
+assign [class="Franz"] $workspace6redt
+
+# floating GUIs
+for_window [class="main.out" Instance="main.out"] floating enable
+for_window [class="Steam"] floating enable
+for_window [class="Wine" Instance="Battle.net.exe"] floating enable
+for_window [class="mupen64plus"] floating enable
+for_window [class="mupen64-rerecording.exe"] floating enable
+
+
+# locking and exiting functions
+# SUSPEND
+bindsym $mod+Shift+s exec "~/.config/lock.sh && systemctl suspend"
+# LOCK
+bindsym $mod+Shift+x exec "~/.config/lock.sh"
+
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec --no-startup-id $term
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+bindsym $mod+d exec --no-startup-id rofi -show run
+
+# change focus
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+bindsym $mod+p focus parent
+bindsym $mod+c focus child
+
+# move focused window
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+# split in horizontal orientation
+bindsym $mod+z split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+# bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+c focus child
+
+# switch to workspace
+bindsym $mod+1 workspace $workspace1term
+bindsym $mod+2 workspace $workspace2ffox
+bindsym $mod+3 workspace $workspace3proj
+bindsym $mod+4 workspace $workspace4play
+bindsym $mod+5 workspace $workspace5ship
+bindsym $mod+6 workspace $workspace6redt
+bindsym $mod+7 workspace $workspace7chro
+bindsym $mod+8 workspace $workspace8game
+bindsym $mod+9 workspace $workspace9mail
+bindsym $mod+0 workspace $workspace0misc
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $workspace1term
+bindsym $mod+Shift+2 move container to workspace $workspace2ffox
+bindsym $mod+Shift+3 move container to workspace $workspace3proj
+bindsym $mod+Shift+4 move container to workspace $workspace4play
+bindsym $mod+Shift+5 move container to workspace $workspace5ship
+bindsym $mod+Shift+6 move container to workspace $workspace6redt
+bindsym $mod+Shift+7 move container to workspace $workspace7chro
+bindsym $mod+Shift+8 move container to workspace $workspace8game
+bindsym $mod+Shift+9 move container to workspace $workspace9mail
+bindsym $mod+Shift+0 move container to workspace $workspace0misc
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym $left resize shrink width 10 px or 10 ppt
+        bindsym $down resize grow height 10 px or 10 ppt
+        bindsym $up resize shrink height 10 px or 10 ppt
+        bindsym $right resize grow width 10 px or 10 ppt
+
+        # default size
+        bindsym space resize shrink width 1000000px; resize shrink height 1000000px; resize grow width 1024px; resize grow height 768px;
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Change to a different TTY
+mode "tty" {
+    bindsym 1 exec gksudo chvt 1
+    bindsym 2 exec gksudo chvt 2
+    bindsym 3 exec gksudo chvt 3
+    bindsym 4 exec gksudo chvt 4
+    bindsym 5 exec gksudo chvt 5
+    bindsym 6 exec gksudo chvt 6
+    bindsym 7 exec gksudo chvt 7
+    bindsym 8 exec gksudo chvt 8
+    bindsym 9 exec gksudo chvt 9
+    bindsym 0 exec gksudo chvt 10
+
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+grave mode "tty"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+	colors {
+		background $background
+		statusline $foreground
+		separator  $gray
+
+		# Type				Border		Background		Text
+		focused_workspace	$background	$primary		$background
+		active_workspace	$secondary	$secondary		$primary
+		inactive_workspace	$tertiary	$background		$tertiary
+		urgent_workspace	$foreground $warning		$foreground
+	}
+#status_command i3blocks
+    status_command ~/.config/status.sh
+	position top
+}
+
+# Startup Applications
+exec_always feh --bg-scale ~/.config/background.png
+exec compton
+exec unclutter
+# exec screenkey --opacity 0.5 -t 0.5
+exec_always nm-applet
+exec pa-applet
+exec redshift-gtk
+
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -U 10
+
+# Touchpad controls
+bindsym XF86TouchpadToggle exec ~/.config/toggletouchpad.sh
+bindsym $mod+t exec ~/.config/toggletouchpad.sh
+
+# Window Colours
+# class			        border			background	text		indicator
+client.focused		    $primary		$background	$secondary	$gray
+client.focused_inactive	$secondary		$background	$primary	$gray
+client.unfocused	    $tertiary		$background	$tertiary	$gray
+client.urgent		    $foreground		$warning	$foreground	$gray
+
+# gaps
+gaps inner 15
+gaps outer 0
+
+# Disable mouse focussing
+focus_follows_mouse no
+
+mode "i3" {
+    bindsym 0 exec ~/.config/togglescreen.sh
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+space mode "i3"
